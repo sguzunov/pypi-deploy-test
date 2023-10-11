@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: lib-distribution
-          path: dist
+          path: dist/
   
   job2:
     needs: job1
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: List Before
         run: |
-          ls
+          ls -R
           
       - uses: actions/download-artifact@v3
         with:
@@ -38,5 +38,5 @@ jobs:
           
       - name: List After
         run: |
-          ls
+          ls -R
           cat dist/test.txt
