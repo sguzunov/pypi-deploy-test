@@ -6,6 +6,9 @@ on:
 
 jobs:
   job1:
+    environment:
+      name: pypi
+      url: https://pypi.org/project/dash-glue42/
     permissions:
       id-token: write
     runs-on: ubuntu-latest
