@@ -23,5 +23,6 @@ jobs:
       - env:
           OUTPUT_DIST: ${{ needs.job1.outputs.OUTPUT_DIST }}
         run: |
-          echo "$OUTPUT_DIST"
+          echo "My dir: $PWD"
+          echo "Dist dir: $OUTPUT_DIST"
           ls "$OUTPUT_DIST"
