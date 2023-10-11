@@ -6,23 +6,12 @@ on:
 
 jobs:
   job1:
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      OUTPUT_DIST: ${{ steps.packaging.outputs.packDist }}
     steps:
-      - id: packaging
-        run: |
-          mkdir dist
-          echo "packDist=$PWD/dist" >> "$GITHUB_OUTPUT"
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - env:
-          OUTPUT_DIST: ${{ needs.job1.outputs.OUTPUT_DIST }}
-        run: |
-          echo "My dir: $PWD"
-          echo "Dist dir: $OUTPUT_DIST"
-          ls "$OUTPUT_DIST"
+      - name: Write to file
+        run: echo $(date +%s) >> test.txt
