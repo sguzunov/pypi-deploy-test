@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      OUTPUT_DIST: ${{ steps.packaging.outputs.OUTPUT_DIST }}
+      OUTPUT_DIST: ${{ steps.packaging.outputs.packDist }}
     steps:
       - id: packaging
         run: |
           mkdir dist
-          echo "OUTPUT_DIST=$PWD/dist" >> $GITHUB_ENV
+          echo "packDist=$PWD/dist" >> "$GITHUB_ENV"
 
   job2:
     runs-on: ubuntu-latest
