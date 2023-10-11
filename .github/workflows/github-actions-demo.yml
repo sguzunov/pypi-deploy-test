@@ -11,8 +11,8 @@ jobs:
     outputs:
       OUTPUT_DIST: ${{ steps.packaging.outputs.OUTPUT_DIST }}
     steps:
-      - name: Pack distribution
-        id: packaging
+      - id: packaging
+        name: Pack distribution
         run: |
           mkdir dist
           echo "OUTPUT_DIST=$PWD/dist" >> $GITHUB_ENV
