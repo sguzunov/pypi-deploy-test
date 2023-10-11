@@ -25,4 +25,4 @@ jobs:
           OUTPUT_DIR: ${{ needs.job1.outputs.OUTPUT_DIR }}
         run: |
           echo "$OUTPUT_DIR"
-          ls "$OUTPUT_DIR"
+          ls $OUTPUT_DIR
