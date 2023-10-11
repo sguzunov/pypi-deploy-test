@@ -6,6 +6,21 @@ on:
 
 jobs:
   job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Write to file
+        run: mkdir dist && echo $(date +%s) >> dist/test.txt
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lib-distribution
+          path: dist
+  
+  job2:
+    needs: job1
     environment:
       name: pypi
       url: https://pypi.org/project/dash-glue42/
@@ -13,8 +28,15 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Write to file
-        run: echo $(date +%s) >> test.txt
+      - name: List Before
+        run: |
+          ls
+          
+      - uses: actions/download-artifact@v3
+        with:
+          name: lib-distribution
+          
+      - name: List After
+        run: |
+          ls
+          cat dist/test.txt
