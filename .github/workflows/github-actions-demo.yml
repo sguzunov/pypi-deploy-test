@@ -34,4 +34,4 @@ jobs:
     steps:
     - env:
         OUTPUT_DIR: ${{ needs.build.outputs.OUTPUT_DIR }}
-      run: echo "$OUTPUT_DIR"
+    - run: echo "$OUTPUT_DIR"
