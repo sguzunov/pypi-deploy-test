@@ -14,7 +14,7 @@ jobs:
       - id: packaging
         run: |
           mkdir dist
-          echo "packDist=$PWD/dist" >> "$GITHUB_ENV"
+          echo "packDist=$PWD/dist" >> "$GITHUB_OUTPUT"
 
   job2:
     runs-on: ubuntu-latest
